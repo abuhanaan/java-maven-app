@@ -7,16 +7,15 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages {
-
-        stage("init") {
+        stage('init') {
             steps {
                 script {
-                    gv = load "script.groovy"
+                    gv = load 'script.groovy'
                 }
             }
         }
 
-        stage("build") {
+        stage('build') {
             steps {
                 script {
                     gv.buildApp()
@@ -24,7 +23,7 @@ pipeline {
             }
         }
 
-        stage("test") {
+        stage('test') {
             when {
                 expression {
                     params.executeTests
@@ -37,7 +36,7 @@ pipeline {
             }
         }
 
-        stage("deploy") {
+        stage('deploy') {
             steps {
                 script {
                     gv.deployApp()
