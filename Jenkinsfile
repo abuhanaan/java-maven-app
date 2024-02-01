@@ -18,11 +18,11 @@ pipeline {
                 script {
                     echo 'building the docker image ...'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-repo',
-                    usernameVariable: 'USER', passwordVariable: 'PWD')]) {
+                    usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                         sh "docker build -t abuhanaan/demo-app:jma-2.0 ."
                         echo "Using username: $USER"
-                        echo "Using password: $PWD"
-                        sh "echo \$PWD | docker login -u \$USER --password-stdin"
+                        echo "Using password: $PASS"
+                        sh "echo \$PASS | docker login -u \$USER --password-stdin"
                         sh 'docker push abuhanaan/demo-app:jma-2.0'
                     }
                 }
