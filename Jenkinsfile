@@ -5,11 +5,13 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages {
+
         stage("build") {
             steps {
-                echo "building the application"
+                echo "building the application..."
             }
         }
+
         stage("test") {
             when {
                 expression {
@@ -17,12 +19,13 @@ pipeline {
                 }
             }
             steps {
-                echo "testing the application"
+                echo "testing the application..."
             }
         }
+
         stage("deploy") {
             steps {
-                echo 'deploying the application'
+                echo 'deploying the application...'
                 echo "deploying version ${params.VERSION}"
             }
         }
