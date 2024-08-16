@@ -1,10 +1,10 @@
-def testApp() {
-    echo 'testing the application'
-}
-
 def buidApp() {
     echo 'building the application'
     echo "building version ${VERSION}"
+}
+
+def testApp() {
+    echo 'testing the application'
 }
 
 def deployApp() {
